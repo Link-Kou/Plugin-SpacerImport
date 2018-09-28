@@ -7,7 +7,7 @@
     <groupId>com.plugin</groupId>
     <artifactId>SpacerImport</artifactId>
     <packaging>jar</packaging>
-    <version>1.3.3</version>
+    <version>1.3.4</version>
     <name>Plugin-SpacerImport-${parent.version}</name>
     <url>http://maven.apache.org</url>
 

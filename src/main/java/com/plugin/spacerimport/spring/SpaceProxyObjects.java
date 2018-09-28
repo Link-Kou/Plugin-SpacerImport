@@ -51,7 +51,7 @@ public class SpaceProxyObjects implements FactoryBean, InitializingBean, Disposa
 				} else {
 					SpacerImport SpacerImport = method.getAnnotation(SpacerImport.class);
 					SpringLocalCall springLocalCall = new SpringLocalCall(SpacerImport);
-					return springLocalCall.getinvoke(method,args);
+					return springLocalCall.getinvoke(proxy,method,args);
 				}
 			}
 

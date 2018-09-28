@@ -12,9 +12,11 @@ import com.plugin.spacerimport.returns.SpaceReaponseModel;
 import com.plugin.spacerimport.contrast.TypeContrast;
 import com.plugin.spacerimport.error.ErrorType;
 import com.plugin.spacerimport.spring.SpaceSpringContextUtil;
+import org.springframework.aop.support.AopUtils;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 
@@ -77,6 +79,11 @@ public class SpringLocalCall {
     private String beanname;
 
     /**
+     * 是否强制报错
+     */
+    private boolean exception;
+
+    /**
      * 初始化
      *
      * @param SpacerImport
@@ -93,6 +100,7 @@ public class SpringLocalCall {
         //#{ServiceDemoBeCall.Demo}
         String methods = this.SpacerImport.ServiceClassMethods();
         this.beanname = this.SpacerImport.BeanName();
+        this.exception = this.SpacerImport.Exception();
         String[] methodss = methods.split("\\.");
         this.classname = methodss[0].replace("#", "").replace("{", "");
         this.methodname = methodss[1].replace("}", "");
@@ -152,7 +160,7 @@ public class SpringLocalCall {
      * @param args
      * @return
      */
-    public Object getinvoke(Method m, Object... args) {
+    public Object getinvoke(Object proxy,Method m, Object... args) throws Exception{
         SpaceReaponseModel spaceReaponseModel = new SpaceReaponseModel();
         if(getNotEmptyBean()){
             Class<?>[] classes = getParameterTypes();
@@ -170,6 +178,10 @@ public class SpringLocalCall {
                                     .setModel(json1.fromJson(json, returnTypeConstraint.getGenericReturnType()))
                                     .setJsonstring(json);
                         } catch (Exception e) {
+                            e.printStackTrace();
+                            if(exception){
+                                throw e;
+                            }
                             spaceReaponseModel.setSuccessful(false).setErrortype(ErrorType.Exception).setException(e);
                             e.printStackTrace();
                             return spaceReaponseModel;

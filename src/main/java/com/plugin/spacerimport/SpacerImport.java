@@ -19,4 +19,10 @@ public @interface SpacerImport {
 	 */
 	String BeanName() default "";
 
+	/**
+	 * 是否强制报错
+	 * @return
+	 */
+	boolean Exception() default false;
+
 }
