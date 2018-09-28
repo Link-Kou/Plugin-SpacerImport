@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:space="http://www.spring.space.com/spring/schema/space"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.spring.space.com/spring/schema/space http://www.spring.space.com/spring/schema/space.xsd">
+
+    <!-- 启动SpringMVC的注解功能 -->
+    <mvc:annotation-driven/>
+    <!-- 自动扫描该包 -->
+    <context:component-scan base-package="com"/>
+
+    <!-- 激活自动代理功能 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+    <!--解耦容器1.0-->
+    <!--<bean class="SpaceBeanProcessor">
+        <property name="prefix">
+            <array value-type="java.lang.String">
+                <value>com</value>
+            </array>
+        </property>
+    </bean>-->
+
+    <!--解耦容器2.0-->
+    <space:spaceprocessor>
+        <value>com</value>
+    </space:spaceprocessor>
+
+    <!--设置response返回参数为UTF-8 保证正常输出字符串-->
+    <bean id="stringHttpMessageConverter"
+          class="org.springframework.http.converter.StringHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>text/plain;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>
