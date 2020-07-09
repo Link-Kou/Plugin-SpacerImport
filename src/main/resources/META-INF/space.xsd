@@ -15,7 +15,7 @@
         <xsd:annotation>
             <xsd:appinfo>
                 <tool:annotation>
-                    <tool:exports type="fully.qualified.ClassName" />
+                    <tool:exports type="fully.qualified.ClassName"/>
                 </tool:annotation>
             </xsd:appinfo>
         </xsd:annotation>
@@ -36,24 +36,6 @@
                     </xsd:documentation>
                 </xsd:annotation>
             </xsd:attribute>-->
-        </xsd:complexType>
-    </xsd:element>
-
-
-    <xsd:element name="prefix2">
-        <xsd:complexType>
-            <xsd:complexContent>
-                <xsd:extension base="beans:identifiedType">
-                    <xsd:attribute name="base-package" type="xsd:string"
-                                   use="required">
-                        <xsd:annotation>
-                            <xsd:documentation><![CDATA[
-	The comma/semicolon/space/tab/linefeed-separated list of packages to scan for annotated components.
-					]]></xsd:documentation>
-                        </xsd:annotation>
-                    </xsd:attribute>
-                </xsd:extension>
-            </xsd:complexContent>
         </xsd:complexType>
     </xsd:element>
 

@@ -1,4 +1,4 @@
-package com.plugin.spacerimport.spring;
+package com.linkkou.spacerimport.spring;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -8,11 +8,14 @@ import org.springframework.context.ApplicationContextAware;
 /**
  * spring 上下文
  * 需要在初始化的加载此列
- * <context:component-scan base-package="com.DJPay" />
+ * <context:component-scan base-package="com" />
  */
 public class SpaceSpringContextUtil implements ApplicationContextAware {
 
-    private static ApplicationContext applicationContext; // Spring应用上下文环境
+    /**
+     * Spring应用上下文环境
+     */
+    private static ApplicationContext applicationContext;
 
     /**
      * 实现ApplicationContextAware接口的回调方法，设置上下文环境

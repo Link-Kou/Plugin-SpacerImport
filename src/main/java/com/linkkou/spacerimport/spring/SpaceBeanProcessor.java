@@ -1,4 +1,4 @@
-package com.plugin.spacerimport.spring;
+package com.linkkou.spacerimport.spring;
 
 import org.reflections.Reflections;
 import org.springframework.beans.BeansException;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 import org.springframework.beans.factory.support.RootBeanDefinition;
-import com.plugin.spacerimport.SpacerPipe;
+import com.linkkou.spacerimport.SpacerPipe;
 
 import java.lang.annotation.Annotation;
 import java.util.Set;
@@ -22,7 +22,6 @@ import java.util.Set;
  *
  * Created by LK on 2017/4/23.
  */
-/*@Configuration*/
 public class SpaceBeanProcessor extends SpaceSpringContextUtil implements BeanDefinitionRegistryPostProcessor {
 
 	/**

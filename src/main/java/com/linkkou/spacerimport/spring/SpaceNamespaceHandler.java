@@ -1,4 +1,4 @@
-package com.plugin.spacerimport.spring;
+package com.linkkou.spacerimport.spring;
 
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 
